@@ -8,10 +8,10 @@ info:
 servers:
 - url: /rain-api/v1
 paths:
-  /basins:
+  /song:
     get:
       summary: Returns a list of basins.
-      operationId: controller.get_basins
+      operationId: controller.get_song
       responses:
         200:
           description: Success
@@ -20,69 +20,68 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/BasinShort'
-  /basins/{basinId}:
-    parameters:
-    - name: basinId
-      in: path
-      required: true
-      schema:
-        type : integer
-    get:
-      summary: Returns complete details of the specified basin
-      operationId: controller.get_basin_details
-      responses:
-        200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BasinFull'
-  /basins/{basinId}/stations:
-    parameters:
-    - name: basinId
-      in: path
-      required: true
-      schema:
-        type : integer
-    get:
-      summary: Returns a list of stations located within the specified basin.
-      operationId: controller.get_stations
-      responses:
-        200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/StationShort'
-  /stations/{stationId}:
-    parameters:
-    - name: stationId
-      in: path
-      required: true
-      schema:
-        type : integer
-    get:
-      summary: Returns complete details of the specified station
-      operationId: controller.get_station_details
-      responses:
-        200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StationFull'
+                  $ref: '#/components/schemas/SongDetail'
+
+  # /basins/{basinId}:
+  #   parameters:
+  #   - name: basinId
+  #     in: path
+  #     required: true
+  #     schema:
+  #       type : integer
+  #   get:
+  #     summary: Returns complete details of the specified basin
+  #     operationId: controller.get_basin_details
+  #     responses:
+  #       200:
+  #         description: Success
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/BasinFull'
+  # /basins/{basinId}/stations:
+  #   parameters:
+  #   - name: basinId
+  #     in: path
+  #     required: true
+  #     schema:
+  #       type : integer
+  #   get:
+  #     summary: Returns a list of stations located within the specified basin.
+  #     operationId: controller.get_stations
+  #     responses:
+  #       200:
+  #         description: Success
+  #         content:
+  #           application/json:
+  #             schema:
+  #               type: array
+  #               items:
+  #                 $ref: '#/components/schemas/StationShort'
+  # /stations/{stationId}:
+  #   parameters:
+  #   - name: stationId
+  #     in: path
+  #     required: true
+  #     schema:
+  #       type : integer
+  #   get:
+  #     summary: Returns complete details of the specified station
+  #     operationId: controller.get_station_details
+  #     responses:
+  #       200:
+  #         description: Success
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/StationFull'
 
 components:
   schemas:
-    BasinShort:
+    SongDetail:
       type: object
       properties:
-        basinId:
-          type: integer
-        name:
+        title:
           type: string
     BasinFull:
       type: object
